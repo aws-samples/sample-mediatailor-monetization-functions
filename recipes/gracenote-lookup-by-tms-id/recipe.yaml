@@ -1,0 +1,19 @@
+id: gracenote-lookup-by-tms-id
+name: Gracenote OnConnect Lookup API by TMS ID
+consoleRecipeId: gracenote-content-lookup
+description: >-
+  Resolve a Gracenote TMS ID to a full set of program metadata — title, series,
+  season, episode, genre, language, rating, entity type. Writes the result into
+  player_params under the same keys that the OpenAds video recipe reads, so the
+  two recipes compose end-to-end without additional plumbing.
+categories:
+  - DATA_PROCESSING
+services:
+  - Gracenote
+  - HTTP Request
+hook: PRE_ADS_REQUEST
+functionType: HTTP_REQUEST
+tier: L1
+documentationUrl: https://developer.tmsapi.com/docs/read/data_v1_1/programs/Program_details
+requiredReplacements:
+  "Gracenote API key": YOUR_GRACENOTE_API_KEY

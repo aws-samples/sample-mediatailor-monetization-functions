@@ -1,0 +1,16 @@
+{
+  "_comment": "Sample player parameters, including content_* populated by a Gracenote lookup recipe run earlier in the pipeline, and liveRampEnvelope from the LiveRamp recipe.",
+  "adsParams": {
+    "app_id": "com.example.streamingapp",
+    "app_name": "Example Streaming App",
+    "app_bundle": "com.example.streamingapp",
+    "app_domain": "example.com",
+    "ifa": "38400000-8cf0-11bd-b23e-10b96e40000d",
+    "ifa_type": "rida",
+    "liveRampEnvelope": "AjKloScVce-samples-illustrative-rampid-envelope-value",
+    "content_id": "EP006883590001",
+    "content_title": "Sample Series",
+    "content_genre": "Comedy",
+    "content_rating": "TV-14"
+  }
+}

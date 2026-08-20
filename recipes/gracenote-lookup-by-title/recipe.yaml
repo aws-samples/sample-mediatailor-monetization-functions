@@ -1,0 +1,19 @@
+id: gracenote-lookup-by-title
+name: Gracenote OnConnect Lookup API by Title
+consoleRecipeId: gracenote-content-search
+description: >-
+  Search the Gracenote OnConnect API by program title and resolve the first
+  match to a full set of program metadata — TMS ID, title, series, season,
+  episode, genre, language, rating, entity type. Use this when your player
+  passes a content title rather than a Gracenote TMS ID.
+categories:
+  - DATA_PROCESSING
+services:
+  - Gracenote
+  - HTTP Request
+hook: PRE_ADS_REQUEST
+functionType: HTTP_REQUEST
+tier: L1
+documentationUrl: https://developer.tmsapi.com/docs/read/data_v1_1/programs/Program_search
+requiredReplacements:
+  "Gracenote API key": YOUR_GRACENOTE_API_KEY

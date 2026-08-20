@@ -1,0 +1,6 @@
+{
+  "_comment": "Sample player parameters. content_tms_id identifies the program to look up. This value populates player_params.content_tms_id, which the function reads. Illustrative and safe to commit.",
+  "adsParams": {
+    "content_tms_id": "EP006883590001"
+  }
+}

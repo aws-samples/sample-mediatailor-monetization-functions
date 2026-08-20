@@ -1,0 +1,6 @@
+{
+  "_comment": "Sample player parameters. content_title is the program title to search for. This value populates player_params.content_title, which the function reads. Illustrative and safe to commit.",
+  "adsParams": {
+    "content_title": "Sample Series"
+  }
+}

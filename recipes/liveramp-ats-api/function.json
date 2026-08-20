@@ -1,0 +1,18 @@
+{
+  "FunctionId": "liveramp-ats-api",
+  "FunctionType": "HTTP_REQUEST",
+  "HttpRequestConfiguration": {
+    "Runtime": "JSONATA",
+    "MethodType": "GET",
+    "Url": "{% 'https://api.rlcdn.com/api/identity/v2/envelope?pid=YOUR_PLACEMENT_ID&it=4&iv=' & $encodeUrlComponent(player_params.hashed_email) & '&ct=' & player_params.consent_type & '&cv=' & $encodeUrlComponent(player_params.consent_value) & '&atype=3' %}",
+    "Headers": {
+      "Origin": "https://YOUR_APPROVED_DOMAIN",
+      "X-Forwarded-For": "{% session.client_ip %}",
+      "Accept": "application/json"
+    },
+    "RequestTimeoutMilliseconds": 2000,
+    "Output": {
+      "player_params.liveRampEnvelope": "{% response.statusCode = 200 ? response.body.envelopes[type=19].value : null %}"
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "_comment": "The function reads the session's own user-agent (from the User-Agent header of the session-init request), not an adsParams value. This fixture records the inbound header the test assumes.",
+  "headers": {
+    "User-Agent": "okhttp/4.9.3"
+  },
+  "adsParams": {}
+}

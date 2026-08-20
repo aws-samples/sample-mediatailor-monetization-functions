@@ -1,0 +1,17 @@
+{
+  "_comment": "The function evaluates once per ad break. The output depends on the random draw $r. Two representative cases are shown; the function writes exactly one adsRequest.url value per break.",
+  "cases": [
+    {
+      "randomDraw": 0.23,
+      "output": {
+        "adsRequest.url": "https://ads-primary.example.com/vast"
+      }
+    },
+    {
+      "randomDraw": 0.86,
+      "output": {
+        "adsRequest.url": "https://ads-secondary.example.com/vast"
+      }
+    }
+  ]
+}

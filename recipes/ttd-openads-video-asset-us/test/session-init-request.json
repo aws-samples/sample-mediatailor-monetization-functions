@@ -1,0 +1,12 @@
+{
+  "_comment": "Sample player parameters. Content metadata comes from EXT-X-ASSET manifest tags (asset.*) at the ad break, so it is not passed here.",
+  "adsParams": {
+    "app_id": "com.example.streamingapp",
+    "app_name": "Example Streaming App",
+    "app_bundle": "com.example.streamingapp",
+    "app_domain": "example.com",
+    "ifa": "38400000-8cf0-11bd-b23e-10b96e40000d",
+    "ifa_type": "rida",
+    "liveRampEnvelope": "AjKloScVce-samples-illustrative-rampid-envelope-value"
+  }
+}

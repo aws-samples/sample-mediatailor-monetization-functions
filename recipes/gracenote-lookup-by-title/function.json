@@ -1,0 +1,25 @@
+{
+  "FunctionId": "gracenote-lookup-by-title",
+  "FunctionType": "HTTP_REQUEST",
+  "HttpRequestConfiguration": {
+    "Runtime": "JSONATA",
+    "MethodType": "GET",
+    "Url": "{% 'https://data.tmsapi.com/v1.1/programs/search?q=' & $encodeUrlComponent(player_params.content_title) & '&limit=1&api_key=YOUR_GRACENOTE_API_KEY' %}",
+    "Headers": {
+      "Accept": "application/json"
+    },
+    "RequestTimeoutMilliseconds": 1000,
+    "Output": {
+      "player_params.content_tms_id": "{% response.statusCode = 200 and count(response.body) > 0 ? response.body[0].tmsId : null %}",
+      "player_params.content_id": "{% response.statusCode = 200 and count(response.body) > 0 ? response.body[0].tmsId : null %}",
+      "player_params.content_title": "{% response.statusCode = 200 and count(response.body) > 0 ? response.body[0].title : null %}",
+      "player_params.content_series": "{% response.statusCode = 200 and count(response.body) > 0 ? response.body[0].seriesTitle : null %}",
+      "player_params.content_season": "{% response.statusCode = 200 and count(response.body) > 0 ? response.body[0].seasonNum : null %}",
+      "player_params.content_episode": "{% response.statusCode = 200 and count(response.body) > 0 ? response.body[0].episodeNum : null %}",
+      "player_params.content_genre": "{% response.statusCode = 200 and count(response.body) > 0 ? response.body[0].genres[0] : null %}",
+      "player_params.content_language": "{% response.statusCode = 200 and count(response.body) > 0 ? response.body[0].titleLang : null %}",
+      "player_params.content_rating": "{% response.statusCode = 200 and count(response.body) > 0 ? response.body[0].ratings[0].code : null %}",
+      "player_params.content_type": "{% response.statusCode = 200 and count(response.body) > 0 ? response.body[0].entityType : null %}"
+    }
+  }
+}

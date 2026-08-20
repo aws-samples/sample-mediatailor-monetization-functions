@@ -1,0 +1,19 @@
+id: ttd-openads-video-gracenote-eu
+name: "OpenAds: Video Ad via Ad Server, with Gracenote + LiveRamp (EU/UK)"
+consoleRecipeId: ttd-podded-video-gracenote-eu
+description: >-
+  Solicit bids for a video ad break from The Trade Desk OpenAds. Caches the VAST server-side and returns a cache ID to pass to your primary ad server for server-side unwrapping. Uses a LiveRamp envelope ID for user identity. OpenRTB 2.6 with GDPR signaling; requires a TCF v2 consent string from your CMP. Use the US variant for North American traffic.
+categories:
+  - AD_DECISIONING
+services:
+  - The Trade Desk
+  - HTTP Request
+hook: PRE_ADS_REQUEST
+functionType: HTTP_REQUEST
+tier: L1
+documentationUrl: https://open.thetradedesk.com/seller/docsApp/GuidesSeller/ssp/doc/StandardAdapter
+requiredReplacements:
+  "TTD Publisher ID": YOUR_TTD_PUBLISHER_ID
+  "Supply Source ID": YOUR_SUPPLY_SOURCE_ID
+  "Bid Floor": YOUR_BIDFLOOR_NUMBER
+  "GDPR Consent String": YOUR_CONSENT_STRING_HERE

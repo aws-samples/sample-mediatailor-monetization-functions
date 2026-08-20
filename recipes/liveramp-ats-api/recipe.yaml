@@ -1,0 +1,21 @@
+id: liveramp-ats-api
+name: LiveRamp ATS API
+consoleRecipeId: liveramp-fetch
+description: >-
+  Enrich ad requests with LiveRamp identity envelopes using the Authenticated
+  Traffic Solution (ATS) API. Resolves a hashed email to a privacy-safe RampID
+  envelope during session initialization, enabling targeted advertising without
+  third-party cookies. The envelope can be passed to any ad decision server via
+  dynamic variable substitution.
+categories:
+  - IDENTITY_ENRICHMENT
+services:
+  - LiveRamp
+  - HTTP Request
+hook: PRE_SESSION_INITIALIZATION
+functionType: HTTP_REQUEST
+tier: L1
+documentationUrl: https://developers.liveramp.com/authenticatedtraffic-api
+requiredReplacements:
+  "LiveRamp Placement ID (pid)": YOUR_PLACEMENT_ID
+  "Approved Origin domain": YOUR_APPROVED_DOMAIN

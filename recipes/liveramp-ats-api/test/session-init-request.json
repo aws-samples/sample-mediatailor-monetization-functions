@@ -1,0 +1,8 @@
+{
+  "_comment": "Sample player parameters supplied at session initialization. These populate the player_params.* namespace that the function reads. Values are illustrative and safe to commit.",
+  "adsParams": {
+    "hashed_email": "EXAMPLE_SHA256_HASHED_EMAIL",
+    "consent_type": "4",
+    "consent_value": "EXAMPLE_TCF_CONSENT_STRING"
+  }
+}

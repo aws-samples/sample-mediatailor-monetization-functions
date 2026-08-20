@@ -1,0 +1,8 @@
+{
+  "_comment": "Expected outputs after the function runs, assuming OpenAds returns HTTP 200 with a seatbid. Values are illustrative. The OpenRTB request body is constructed from session state and (per this variant) the content-metadata source; see function.json for the full body template.",
+  "output": {
+    "player_params.ttd_bid_price": "24.5",
+    "player_params.ttd_cache_id": "sample-collated-vast-cache-id-abc123",
+    "player_params.ttd_cache_url": "https://openads.adsrvr.org/cache?uuid=sample-collated-vast-cache-id-abc123"
+  }
+}
