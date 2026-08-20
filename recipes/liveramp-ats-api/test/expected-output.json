@@ -1,0 +1,15 @@
+{
+  "_comment": "Expected result after the function runs against session-init-request.json, assuming the LiveRamp ATS API returns HTTP 200 with an envelope of type 19. This is the output the function writes to session state; the envelope value shown is an illustrative placeholder.",
+  "outboundRequest": {
+    "method": "GET",
+    "url": "https://api.rlcdn.com/api/identity/v2/envelope?pid=YOUR_PLACEMENT_ID&it=4&iv=EXAMPLE_SHA256_HASHED_EMAIL&ct=4&cv=EXAMPLE_TCF_CONSENT_STRING&atype=3",
+    "headers": {
+      "Origin": "https://YOUR_APPROVED_DOMAIN",
+      "X-Forwarded-For": "203.0.113.42",
+      "Accept": "application/json"
+    }
+  },
+  "output": {
+    "player_params.liveRampEnvelope": "AjKloScVce-samples-illustrative-rampid-envelope-value"
+  }
+}

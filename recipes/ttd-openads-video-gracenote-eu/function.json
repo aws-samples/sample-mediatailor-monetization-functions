@@ -1,0 +1,20 @@
+{
+  "FunctionId": "ttd-openads-video-gracenote-eu",
+  "FunctionType": "HTTP_REQUEST",
+  "HttpRequestConfiguration": {
+    "Runtime": "JSONATA",
+    "MethodType": "POST",
+    "Url": "https://openads.adsrvr.org/openrtb2/auction",
+    "Headers": {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    },
+    "RequestTimeoutMilliseconds": 550,
+    "Body": "{% $string({\n  \"id\": event.id,\n  \"at\": 1,\n  \"tmax\": 500,\n  \"imp\": [\n    {\n      \"id\": \"1\",\n      \"secure\": 1,\n      \"video\": {\n        \"mimes\": [\"video/mp4\", \"video/h264\"],\n        \"minduration\": 1,\n        \"maxduration\": $exists(player_params.max_duration) ? $number(player_params.max_duration) : 30,\n        \"protocols\": [1, 2, 3, 4, 5, 6, 7, 8, 11, 12, 13, 14, 15, 16],\n        \"w\": 1920,\n        \"h\": 1080,\n        \"placement\": 1,\n        \"plcmt\": 1,\n        \"linearity\": 1,\n        \"minbitrate\": 2000,\n        \"maxbitrate\": 30000,\n        \"poddur\": $number(session.avail_duration_secs),\n        \"maxseq\": $floor($number(session.avail_duration_secs) / 15),\n        \"playbackmethod\": [1],\n        \"delivery\": [1, 2]\n      },\n      \"bidfloor\": $number(\"YOUR_BIDFLOOR_NUMBER\"),\n      \"ext\": {\n        \"tid\": avail.index,\n        \"tidt\": 1,\n        \"gpid\": null,\n        \"openads\": {\n          \"bidder\": {\n            \"thetradedesk\": {\n              \"publisherId\": \"YOUR_TTD_PUBLISHER_ID\",\n              \"supplySourceId\": \"YOUR_SUPPLY_SOURCE_ID\"\n            }\n          }\n        }\n      }\n    }\n  ],\n  \"app\": {\n    \"id\": player_params.app_id,\n    \"name\": player_params.app_name,\n    \"bundle\": player_params.app_bundle,\n    \"domain\": player_params.app_domain,\n    \"publisher\": {\n      \"id\": \"YOUR_SUPPLY_SOURCE_ID\"\n    },\n    \"content\": {\n      \"id\": player_params.content_id,\n      \"title\": player_params.content_title,\n      \"series\": player_params.content_series,\n      \"season\": player_params.content_season,\n      \"episode\": player_params.content_episode,\n      \"genre\": player_params.content_genre,\n      \"contentrating\": player_params.content_rating,\n      \"language\": $exists(player_params.content_language) ? player_params.content_language : \"en\"\n    }\n  },\n  \"device\": {\n    \"ua\": session.user_agent,\n    \"ip\": $contains(session.client_ip, \":\") ? null : session.client_ip,\n    \"ipv6\": $contains(session.client_ip, \":\") ? session.client_ip : null,\n    \"ifa\": player_params.ifa,\n    \"dnt\": $exists(player_params.dnt) ? $number(player_params.dnt) : 0,\n    \"lmt\": $exists(player_params.lmt) ? $number(player_params.lmt) : 0,\n    \"ext\": {\n      \"ifa_type\": player_params.ifa_type\n    }\n  },\n  \"user\": {\n    \"eids\": player_params.liveRampEnvelope ? [{\"source\": \"liveramp.com\", \"uids\": [{\"id\": player_params.liveRampEnvelope, \"atype\": 3}]}] : null,\n    \"consent\": \"YOUR_CONSENT_STRING_HERE\"\n  },\n  \"ext\": {\n    \"openads\": {\n      \"cache\": {\n        \"collatedvast\": {\n          \"returnbids\": false\n        }\n      }\n    },\n    \"integrationType\": \"AWSElementalMediaTailor\"\n  },\n  \"regs\": {\n    \"coppa\": $exists(player_params.coppa) ? $number(player_params.coppa) : 0,\n    \"gdpr\": 1\n  }\n}) %}",
+    "Output": {
+      "player_params.ttd_bid_price": "{% response.statusCode = 200 and response.body.seatbid ? $string(response.body.seatbid[0].bid[0].price) : null %}",
+      "player_params.ttd_cache_id": "{% response.statusCode = 200 and response.body.seatbid ? response.body.seatbid[0].bid[0].ext.prebid.cache.bids.cacheId : null %}",
+      "player_params.ttd_cache_url": "{% response.statusCode = 200 and response.body.seatbid ? response.body.seatbid[0].bid[0].ext.prebid.cache.bids.url : null %}"
+    }
+  }
+}

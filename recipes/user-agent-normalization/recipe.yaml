@@ -1,0 +1,17 @@
+id: user-agent-normalization
+name: User-Agent Normalization
+consoleRecipeId: user-agent-normalization
+description: >-
+  Rewrite malformed or non-descriptive user-agents (such as SDK defaults or
+  proxy-injected values) to well-formed strings using a set of case-sensitive
+  substring rules, improving ad targeting and measurement. Normalizes both
+  session.user_agent and session.x_device_user_agent.
+categories:
+  - DATA_PROCESSING
+  - IDENTITY_ENRICHMENT
+services:
+  - Custom Output
+hook: PRE_SESSION_INITIALIZATION
+functionType: CUSTOM_OUTPUT
+tier: L2
+documentationUrl: https://docs.aws.amazon.com/mediatailor/latest/ug/monetization-functions.html

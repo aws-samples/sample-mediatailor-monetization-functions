@@ -1,0 +1,5 @@
+{
+  "FunctionMapping": {
+    "PRE_SESSION_INITIALIZATION": "user-agent-normalization"
+  }
+}

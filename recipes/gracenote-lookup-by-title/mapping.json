@@ -1,0 +1,5 @@
+{
+  "FunctionMapping": {
+    "PRE_ADS_REQUEST": "gracenote-lookup-by-title"
+  }
+}

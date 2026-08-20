@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/aws-samples/mediatailor-monetization-functions/schemas/recipe.schema.json",
+  "title": "MediaTailor Monetization Function recipe metadata",
+  "description": "Schema for recipe.yaml, the metadata file describing a single recipe.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "name", "description", "categories", "services", "hook", "functionType", "tier"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "description": "Kebab-case recipe identifier. Must match the recipe folder name."
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable recipe name, as shown in the MediaTailor console."
+    },
+    "consoleRecipeId": {
+      "type": "string",
+      "description": "The recipe id used by the MediaTailor console, for traceability when the repo folder name differs."
+    },
+    "description": {
+      "type": "string",
+      "description": "One-paragraph summary of what the recipe does."
+    },
+    "categories": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": [
+          "IDENTITY_ENRICHMENT",
+          "TRAFFIC_MANAGEMENT",
+          "DATA_PROCESSING",
+          "MONITORING_LOGGING",
+          "AD_DECISIONING"
+        ]
+      },
+      "description": "Use-case categories (Axis 1)."
+    },
+    "services": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string" },
+      "description": "External/AWS services and the function primitive the recipe uses (Axis 2)."
+    },
+    "hook": {
+      "type": "string",
+      "enum": ["PRE_SESSION_INITIALIZATION", "PRE_ADS_REQUEST"],
+      "description": "The lifecycle hook this recipe is intended to be attached to."
+    },
+    "functionType": {
+      "type": "string",
+      "enum": [
+        "CUSTOM_OUTPUT",
+        "HTTP_REQUEST",
+        "SEQUENTIAL_EXECUTOR",
+        "CONCURRENT_EXECUTOR"
+      ],
+      "description": "The MediaTailor function type used by this recipe."
+    },
+    "status": {
+      "type": "string",
+      "enum": ["ga", "preview"],
+      "default": "ga",
+      "description": "Release status of the recipe."
+    },
+    "tier": {
+      "type": "string",
+      "enum": ["L1", "L2"],
+      "description": "L1 = direct function definition; L2 = representative compiled output from a console design form."
+    },
+    "documentationUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "Primary reference documentation for the recipe or its integrated service."
+    },
+    "requiredReplacements": {
+      "type": "object",
+      "description": "Map of human-readable field label to the placeholder literal that must be replaced in function.json before deploying.",
+      "additionalProperties": { "type": "string" }
+    }
+  }
+}

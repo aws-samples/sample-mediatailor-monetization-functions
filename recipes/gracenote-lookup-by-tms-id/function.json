@@ -1,0 +1,24 @@
+{
+  "FunctionId": "gracenote-lookup-by-tms-id",
+  "FunctionType": "HTTP_REQUEST",
+  "HttpRequestConfiguration": {
+    "Runtime": "JSONATA",
+    "MethodType": "GET",
+    "Url": "{% 'https://data.tmsapi.com/v1.1/programs/' & $encodeUrlComponent(player_params.content_tms_id) & '?api_key=YOUR_GRACENOTE_API_KEY' %}",
+    "Headers": {
+      "Accept": "application/json"
+    },
+    "RequestTimeoutMilliseconds": 1000,
+    "Output": {
+      "player_params.content_id": "{% response.statusCode = 200 ? response.body.tmsId : null %}",
+      "player_params.content_title": "{% response.statusCode = 200 ? response.body.title : null %}",
+      "player_params.content_series": "{% response.statusCode = 200 ? response.body.seriesTitle : null %}",
+      "player_params.content_season": "{% response.statusCode = 200 ? response.body.seasonNum : null %}",
+      "player_params.content_episode": "{% response.statusCode = 200 ? response.body.episodeNum : null %}",
+      "player_params.content_genre": "{% response.statusCode = 200 ? response.body.genres[0] : null %}",
+      "player_params.content_language": "{% response.statusCode = 200 ? response.body.titleLang : null %}",
+      "player_params.content_rating": "{% response.statusCode = 200 ? response.body.ratings[0].code : null %}",
+      "player_params.content_type": "{% response.statusCode = 200 ? response.body.entityType : null %}"
+    }
+  }
+}

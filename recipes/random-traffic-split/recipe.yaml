@@ -1,0 +1,19 @@
+id: random-traffic-split
+name: Random Traffic Split Across Ad Servers
+consoleRecipeId: ads-traffic-split
+description: >-
+  Randomly splits ad requests across multiple ad decision server (ADS) URLs by
+  percentage. Each ad break is routed to one ADS endpoint according to
+  configurable weights — useful for A/B testing ad servers or spreading load.
+categories:
+  - TRAFFIC_MANAGEMENT
+  - AD_DECISIONING
+services:
+  - Custom Output
+hook: PRE_ADS_REQUEST
+functionType: CUSTOM_OUTPUT
+tier: L2
+documentationUrl: https://docs.aws.amazon.com/mediatailor/latest/ug/monetization-functions-examples-ab.html
+requiredReplacements:
+  "Primary ADS URL": https://ads-primary.example.com/vast
+  "Secondary ADS URL": https://ads-secondary.example.com/vast

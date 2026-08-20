@@ -1,0 +1,22 @@
+{
+  "_comment": "Expected result after the function runs, assuming the Gracenote Program Search API returns HTTP 200 with at least one match. Values are illustrative.",
+  "outboundRequest": {
+    "method": "GET",
+    "url": "https://data.tmsapi.com/v1.1/programs/search?q=Sample%20Series&limit=1&api_key=YOUR_GRACENOTE_API_KEY",
+    "headers": {
+      "Accept": "application/json"
+    }
+  },
+  "output": {
+    "player_params.content_tms_id": "EP006883590001",
+    "player_params.content_id": "EP006883590001",
+    "player_params.content_title": "Sample Series",
+    "player_params.content_series": "Sample Series",
+    "player_params.content_season": "1",
+    "player_params.content_episode": "1",
+    "player_params.content_genre": "Comedy",
+    "player_params.content_language": "en",
+    "player_params.content_rating": "TV-14",
+    "player_params.content_type": "Episode"
+  }
+}

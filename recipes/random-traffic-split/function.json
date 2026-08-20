@@ -1,0 +1,10 @@
+{
+  "FunctionId": "random-traffic-split",
+  "FunctionType": "CUSTOM_OUTPUT",
+  "CustomOutputConfiguration": {
+    "Runtime": "JSONATA",
+    "Output": {
+      "adsRequest.url": "{% ($r := $random(); $r < 0.5 ? \"https://ads-primary.example.com/vast\" : $r < 1 ? \"https://ads-secondary.example.com/vast\" : \"https://ads-secondary.example.com/vast\") %}"
+    }
+  }
+}

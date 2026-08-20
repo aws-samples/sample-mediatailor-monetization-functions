@@ -1,0 +1,4 @@
+{
+  "_comment": "This recipe needs no player-supplied parameters — routing is driven entirely by $random() at each ad break. A session initializes normally with no special adsParams.",
+  "adsParams": {}
+}

@@ -1,0 +1,21 @@
+{
+  "_comment": "Expected result after the function runs, assuming the Gracenote Program Details API returns HTTP 200 for an Episode-type program. Values are illustrative. Note: content_tms_id is passed through $encodeUrlComponent() before being placed in the URL; a plain TMS ID like EP006883590001 encodes to itself, but any special characters would be percent-encoded.",
+  "outboundRequest": {
+    "method": "GET",
+    "url": "https://data.tmsapi.com/v1.1/programs/EP006883590001?api_key=YOUR_GRACENOTE_API_KEY",
+    "headers": {
+      "Accept": "application/json"
+    }
+  },
+  "output": {
+    "player_params.content_id": "EP006883590001",
+    "player_params.content_title": "The One Where It All Began",
+    "player_params.content_series": "Sample Series",
+    "player_params.content_season": "1",
+    "player_params.content_episode": "1",
+    "player_params.content_genre": "Comedy",
+    "player_params.content_language": "en",
+    "player_params.content_rating": "TV-14",
+    "player_params.content_type": "Episode"
+  }
+}
